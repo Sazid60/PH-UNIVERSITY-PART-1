@@ -197,7 +197,7 @@ updatedAt
 
 ##### So where there i a chance of growing data we should use referencing
 
-## Embedding Pros and cons
+##### Embedding Pros and cons
 
 | **Pros**                            | **Cons**                    |
 | ----------------------------------- | --------------------------- |
@@ -206,10 +206,48 @@ updatedAt
 | Less expensive lookup               | Limited size                |
 |                                     | Data duplicacy              |
 
-## Referencing Pros and cons
+##### Referencing Pros and cons
 
 | **Pros**        | **Cons**              |
 | --------------- | --------------------- |
 | Faster Writing  | Slow Reading          |
 | Avoid Duplicacy | Slow Expensive Lookup |
 | Scalability     |                       |
+
+## 11-6 Create API Endpoints for PH University Management
+
+API Endpoints
+User:
+
+users/create-student (POST)
+users/create-faculty (POST)
+users/create-admin (POST)
+
+Student:
+students (GET)
+students/:id (GET)
+students/:id (PATCH)
+students/:id (DELETE)
+students/my-profile
+
+Faculty:
+faculties(GET)
+faculties/:id (GET)
+faculties/:id (PATCH)
+faculties/:id (DELETE)
+faculties/my-profile
+
+Admin:
+admins (GET)
+admins /:id (GET)
+admins /:id (PATCH)
+admins /:id (DELETE)
+admins /my-profile
+
+Auth:
+
+auth/login
+auth/refresh-token
+auth/change-password
+auth/forgot-password
+auth/reset-password
