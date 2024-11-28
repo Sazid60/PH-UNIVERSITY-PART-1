@@ -341,3 +341,107 @@ type: Schema.Types.ObjectId,
       ref: 'User', //This is the model name what we want to refer
     },
 ```
+
+## 11-11 Fix bugs and setup basic global error handler
+
+- if we use next(err) it will take as error in express and sends to global error handler
+
+```ts
+try {
+  const result = await StudentServices.getAllStudentsFromDB();
+  // send response
+  res.status(200).json({
+    success: true,
+    message: 'Students are retrieved successfully',
+    data: result,
+  });
+} catch (err) {
+  // res.status(500).json({
+  //   success: false,
+  //   message: err.message || 'Something went wrong',
+  //   error: err,
+  // });
+  next(err);
+}
+```
+
+- global error handler
+
+```ts
+// app.ts
+// global error handler
+// @ts-ignore
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  const statusCode = 500;
+  const message = err.message || 'Something Went Wrong';
+
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    error: err,
+  });
+});
+```
+
+- Must ignore the errors since ts can not define here
+
+- we can use global error handler in middleware
+
+```ts
+// globalErrorHandler.ts
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { NextFunction, Request, Response } from 'express';
+
+// global error handler
+const globalErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const statusCode = 500;
+  const message = err.message || 'Something Went Wrong';
+
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    error: err,
+  });
+};
+
+export default globalErrorHandler;
+```
+
+```ts
+// app.ts
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+import { StudentRoutes } from './app/modules/students/student.route';
+import { userRoutes } from './app/modules/user/user.route';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
+
+const app: Application = express();
+
+// Parser
+app.use(express.json());
+app.use(cors());
+
+// application routes
+app.use('/api/v1/students', StudentRoutes);
+app.use('/api/v1/users', userRoutes);
+
+app.get('/', (req: Request, res: Response) => {
+  const a = 10;
+  res.send(a);
+});
+
+// using global error handler
+// @ts-ignore
+app.use(globalErrorHandler);
+
+export default app;
+```
