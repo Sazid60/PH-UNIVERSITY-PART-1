@@ -442,6 +442,83 @@ app.get('/', (req: Request, res: Response) => {
 // using global error handler
 // @ts-ignore
 app.use(globalErrorHandler);
+app.use(notFound);
 
 export default app;
+```
+
+## 11-12 Create not found route & sendResponse utility
+
+- For Handling error status code we can use this npm
+  [STATUS-CODE-HANDLING NPM](https://www.npmjs.com/package/http-status)
+- using this npm
+
+```ts
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { NextFunction, Request, Response } from 'express';
+
+// global error handler
+const globalErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const statusCode = 500;
+  const message = err.message || 'Something Went Wrong';
+
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    error: err,
+  });
+};
+
+export default globalErrorHandler;
+```
+
+- we can deal with not found route
+
+```ts
+// notFound.ts
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { NextFunction, Request, Response } from 'express';
+import httpStatus from 'http-status';
+
+const notFound = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(httpStatus.NOT_FOUND).json({
+    success: false,
+    message: 'API NOT FOUND',
+    error: '',
+  });
+};
+
+export default notFound;
+```
+
+- we can deal with success message as well
+
+```ts
+import { Response } from 'express';
+
+type TResponse<T> = {
+  statusCode: number;
+  success: boolean;
+  message?: string;
+  data: T;
+};
+const sendResponse = <T>(res: Response, data: TResponse<T>) => {
+  res.status(data?.statusCode).json({
+    success: data.success,
+    message: data.message,
+    data: data.data,
+  });
+};
+
+export default sendResponse;
 ```

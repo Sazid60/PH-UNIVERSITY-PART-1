@@ -1,6 +1,8 @@
 // import studentValidationSchema from '../students/student.validation';
 import { NextFunction, Request, Response } from 'express';
 import { UserServices } from './user.service';
+import sendResponse from '../../utils/sendResponse';
+import httpStatus from 'http-status';
 
 const createStudent = async (
   req: Request,
@@ -15,8 +17,8 @@ const createStudent = async (
     // will call service function to send this data
     const result = await UserServices.createStudentInDB(studentData, password);
 
-    // send response
-    res.status(200).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: 'Student Is Created Successfully',
       data: result,
