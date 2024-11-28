@@ -1,13 +1,14 @@
-import studentValidationSchema from '../students/student.validation';
+// import studentValidationSchema from '../students/student.validation';
+import { UserServices } from './user.service';
 
 const createStudent = async (req: Request, res: Response) => {
   try {
-    const { student: studentData } = req.body;
+    const { password, student: studentData } = req.body;
 
     // using zod
-    const zodValidationData = studentValidationSchema.parse(studentData);
+    // const zodValidationData = studentValidationSchema.parse(studentData);
     // will call service function to send this data
-    const result = await StudentServices.createStudentInDB(zodValidationData);
+    const result = await UserServices.createStudentInDB(studentData, password);
 
     // send response
     res.status(200).json({
