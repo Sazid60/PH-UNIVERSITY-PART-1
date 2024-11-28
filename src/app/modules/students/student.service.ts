@@ -1,27 +1,4 @@
-import { TStudent } from './student.interface';
 import { Student } from './student.model';
-
-const createStudentInDB = async (studentData: TStudent) => {
-  // const result = await StudentModel.create(student); // builtin mongoose static method
-
-  // _______________using custom instance method_________________________
-  //   const student = new Student(studentData); //create an instance
-
-  //   if (await student.isUserExists(studentData.id)) {
-  //     throw new Error('User Already Exists');
-  //   }
-  //   const result = await student.save(); //builtin instance method
-  //   return result;
-  // };
-  // _________________________________________________________________
-
-  // *************Using Static Instance Method*************************
-  if (await Student.isUserExists(studentData.id)) {
-    throw new Error('User Already Exists');
-  }
-  const result = await Student.create(studentData);
-  return result;
-};
 
 // *******************************************************************
 // getting data service
@@ -44,7 +21,6 @@ const deleteStudentFromDB = async (id: string) => {
   return result;
 };
 export const StudentServices = {
-  createStudentInDB,
   getAllStudentsFromDB,
   getSingleStudentFromDB,
   deleteStudentFromDB,
