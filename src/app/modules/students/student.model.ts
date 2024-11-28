@@ -116,6 +116,12 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       required: [true, 'Id Is Required'],
       unique: true, // IDs don't typically require trimming
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      required: [true, 'User Is Required'],
+      unique: true,
+      ref: 'User',
+    },
     password: {
       type: String,
       required: [true, 'Password is Required'],
@@ -201,15 +207,6 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       type: String,
     },
 
-    isActive: {
-      type: String,
-      enum: {
-        values: ['active', 'blocked'], // No need for trimming in enum values
-        message: 'Account status must be either "active" or "blocked"',
-      },
-      required: [true, 'Account Status is Required'],
-      default: 'active',
-    },
     isDeleted: {
       type: Boolean,
       default: false,

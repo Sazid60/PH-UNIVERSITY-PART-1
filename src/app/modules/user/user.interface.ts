@@ -8,8 +8,12 @@ export type TUser = {
 };
 
 //  these are not added inside the schema since these will be set automatically.
-export type NewUser = {
-  id: string;
-  role: string;
-  password?: string;
-};
+// export type NewUser = {
+//   id: string;
+//   role: string;
+//   password?: string;
+// };
+//  we can do this without writing this using partial utility of typescript.
+
+// create a user object
+// const user:Partial<TUser>  = {};
