@@ -31,12 +31,6 @@ const getSingleStudent = async (
   try {
     const { studentId } = req.params;
     const result = await StudentServices.getSingleStudentFromDB(studentId);
-    // send response
-    // res.status(200).json({
-    //   success: true,
-    //   message: 'Students is retrieved successfully',
-    //   data: result,
-    // });
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -56,12 +50,6 @@ const deleteStudent = async (
   try {
     const { studentId } = req.params;
     const result = await StudentServices.deleteStudentFromDB(studentId);
-    // send response
-    // res.status(200).json({
-    //   success: true,
-    //   message: 'Students is deleted successfully',
-    //   data: result,
-    // });
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

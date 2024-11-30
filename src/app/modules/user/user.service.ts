@@ -18,7 +18,7 @@ const createStudentInDB = async (studentData: TStudent, password: string) => {
   userData.password = password || (config.default_password as string);
 
   //   console.log('password:', password);
-  console.log(studentData);
+  // console.log(studentData);
 
   // set student role
   userData.role = 'student';
