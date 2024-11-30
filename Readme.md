@@ -42,147 +42,168 @@ PH University Management Project
 
 Functional Requirements:
 
-Authentication
-Student
-Students can log in and log out securely.
-Students can update their password.
-Faculty
-Faculty can log in and log out securely.
-Faculty can update their password.
-Admin:
-Admin can log in and log out securely.
-Admin can update their password.
+_Authentication_
+**Student:**
 
-Profile Management:
-Student
-Students can manage and update their profile.
-Students can update certain fields.
-Faculty:
-Faculty can manage and update their profile.
-Faculty can update certain fields.
-Admin:
-Admin can manage and update their profile.
-Admin can update certain fields.
+- Students can log in and log out securely.
+- Students can update their password.
 
-Academic Process:
-Student:
-Students can enroll in offered courses for a specific semester.
-Students can view their class schedule.
-Students can see their grades.
-Students can view notice boards and events.
-Faculty:
-Faculty can manage student grades.
-Faculty can access student’s personal and academic information.
-Admin:
-Admin can manage multiple processes:
-Semester.
-Course.
-Offered Course.
-Section.
-Room.
-Building.
+**Faculty:**
 
-User Management:
-Admin:
-Admins can manage multiple accounts.
-Admin can block/unblock users.
-Admin can change user passwords.
+- Faculty can log in and log out securely.
+- Faculty can update their password.
+
+**Admin:**
+
+- Admin can log in and log out securely.
+- Admin can update their password.
+
+_Profile Management:_
+**Student:**
+
+- Students can manage and update their profile.
+- Students can update certain fields.
+
+**Faculty:**
+
+- Faculty can manage and update their profile.
+- Faculty can update certain fields.
+
+**Admin:**
+
+- Admin can manage and update their profile.
+- Admin can update certain fields.
+
+_Academic Process:_
+**Student:**
+
+- Students can enroll in offered courses for a specific semester.
+- Students can view their class schedule.
+- Students can see their grades.
+- Students can view notice boards and events.
+
+**Faculty:**
+
+- Faculty can manage student grades.
+- Faculty can access student’s personal and academic information.
+
+**Admin:**
+
+- Admin can manage multiple processes:
+  - Semester.
+  - Course.
+  - Offered Course.
+  - Section.
+  - Room.
+  - Building.
+
+_User Management:_
+**Admin:**
+
+- Admins can manage multiple accounts.
+- Admin can block/unblock users.
+- Admin can change user passwords.
 
 ### 11-3 Modeling Data for PH University Management
 
-Data Model
+_Data Model:_
 
-User:
+**User:**
 
-\_id
-id (generated)
-password
-needsPasswordChange
-role
-status
-isDeleted
-createdAt
-updatedAt
+- \_id
+- id (generated)
+- password
+- needsPasswordChange
+- role
+- status
+- isDeleted
+- createdAt
+- updatedAt
 
-Student:
-\_id
-id (generated)
-name
-gender
-dateOfBirth
-email
-contactNo
-emergencyContactNo
-presentAddress
-permanentAddress
-guardian
-localGuardian
-profileImage
-admissionSemester
-isDeleted
-createdAt
-updatedAt
+**Student:**
 
-Faculty:
-\_id
-id (generated)
-designation
-name
-gender
-dateOfBirth
-email
-contactNo
-emergencyContactNo
-presentAddress
-permanentAddress
-profileImage
-academicFaculty
-academicDepartment
-isDeleted
-createdAt
-updatedAt
+- \_id
+- id (generated)
+- name
+- gender
+- dateOfBirth
+- email
+- contactNo
+- emergencyContactNo
+- presentAddress
+- permanentAddress
+- guardian
+- localGuardian
+- profileImage
+- admissionSemester
+- isDeleted
+- createdAt
+- updatedAt
 
-Admin:
-\_id
-id (generated)
-designation
-name
-gender
-dateOfBirth
-email
-contactNo
-emergencyContactNo
-presentAddress
-permanentAddress
-profileImage
-managementDepartment
-isDeleted
-createdAt
-updatedAt
+**Faculty:**
 
-Academic Semester:
+- \_id
+- id (generated)
+- designation
+- name
+- gender
+- dateOfBirth
+- email
+- contactNo
+- emergencyContactNo
+- presentAddress
+- permanentAddress
+- profileImage
+- academicFaculty
+- academicDepartment
+- isDeleted
+- createdAt
+- updatedAt
 
-\_id
-name
-year
-code
-startMonth
-endMonth
-createdAt
-updatedAt
+**Admin:**
 
-Academic Faculty:
-\_id
-name
-createdAt
-updatedAt
+- \_id
+- id (generated)
+- designation
+- name
+- gender
+- dateOfBirth
+- email
+- contactNo
+- emergencyContactNo
+- presentAddress
+- permanentAddress
+- profileImage
+- managementDepartment
+- isDeleted
+- createdAt
+- updatedAt
 
-Academic Department:
-\_id
-name
-academicFaculty
-createdAt
-updatedAt
+**Academic Semester:**
+
+- \_id
+- name
+- year
+- code
+- startMonth
+- endMonth
+- createdAt
+- updatedAt
+
+**Academic Faculty:**
+
+- \_id
+- name
+- createdAt
+- updatedAt
+
+**Academic Department:**
+
+- \_id
+- name
+- academicFaculty
+- createdAt
+- updatedAt
 
 ### 11-4 Design Schema and ER Diagram
 
