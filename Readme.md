@@ -237,41 +237,45 @@ _Data Model:_
 
 ## 11-6 Create API Endpoints for PH University Management
 
-API Endpoints
-User:
+### API Endpoints
 
-users/create-student (POST)
-users/create-faculty (POST)
-users/create-admin (POST)
+#### User:
 
-Student:
-students (GET)
-students/:id (GET)
-students/:id (PATCH)
-students/:id (DELETE)
-students/my-profile
+- users/create-student (POST)
+- users/create-faculty (POST)
+- users/create-admin (POST)
 
-Faculty:
-faculties(GET)
-faculties/:id (GET)
-faculties/:id (PATCH)
-faculties/:id (DELETE)
-faculties/my-profile
+#### Student:
 
-Admin:
-admins (GET)
-admins /:id (GET)
-admins /:id (PATCH)
-admins /:id (DELETE)
-admins /my-profile
+- students (GET)
+- students/:id (GET)
+- students/:id (PATCH)
+- students/:id (DELETE)
+- students/my-profile
 
-Auth:
+#### Faculty:
 
-auth/login
-auth/refresh-token
-auth/change-password
-auth/forgot-password
-auth/reset-password
+- faculties(GET)
+- faculties/:id (GET)
+- faculties/:id (PATCH)
+- faculties/:id (DELETE)
+- faculties/my-profile
+
+#### Admin:
+
+- admins (GET)
+- admins /:id (GET)
+- admins /:id (PATCH)
+- admins /:id (DELETE)
+- admins /my-profile
+
+#### Auth:
+
+- auth/login
+- auth/refresh-token
+- auth/change-password
+- auth/forgot-password
+- auth/reset-password
 
 ![alt text](image.png)
 
