@@ -252,6 +252,8 @@ auth/change-password
 auth/forgot-password
 auth/reset-password
 
+![alt text](image.png)
+
 ## 11-7 Create user interface ,model and validation
 
 - see code
